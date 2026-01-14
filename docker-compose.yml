@@ -4,6 +4,8 @@ services:
     build: .
     ports:
       - "8000:8000"
+    networks:
+      - monitoring
     restart: always
 
   prometheus:
@@ -17,10 +19,17 @@ services:
       - "--web.enable-lifecycle"
       - "--storage.tsdb.retention.time=48h"
       - "--storage.tsdb.path=/prometheus"
+    networks:
+      - monitoring
     restart: always
 
   grafana:
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
+    networks:
+      - monitoring
     restart: always
+
+networks:
+  monitoring:

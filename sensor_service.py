@@ -10,15 +10,15 @@ data_blob = "X" * 5_000_000
 REQUEST_COUNT = Counter("sensor_requests_total", "Total sensor requests")
 CPU_SPIKE = Gauge("sensor_cpu_spike", "Simulated CPU spike state")
 PROCESS_LATENCY = Histogram("sensor_processing_latency_seconds", "Processing time")
+QUEUE_DEPTH = Gauge("sensor_queue_depth", "Current depth of the processing queue")
 
 @app.route("/metrics")
 def metrics():
     start = time.time()
-    for _ in range(2000000):
-        pass
-    temp_data = data_blob * random.randint(1, 3)
+    time.sleep(random.uniform(0.01, 0.05))
     PROCESS_LATENCY.observe(time.time() - start)
     CPU_SPIKE.set(random.randint(0, 1))
+    QUEUE_DEPTH.set(random.randint(0, 20))
     REQUEST_COUNT.inc()
     return generate_latest()
 
