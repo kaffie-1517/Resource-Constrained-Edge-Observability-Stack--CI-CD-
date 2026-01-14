@@ -4,32 +4,55 @@ services:
     build: .
     ports:
       - "8000:8000"
+    expose:
+      - "8000"
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 50M
     networks:
       - monitoring
-    restart: always
 
-  prometheus:
-    image: prom/prometheus:latest
+  victoria-metrics:
+    image: victoriametrics/victoria-metrics:latest
     ports:
-      - "9090:9090"
+      - "8428:8428"
+    expose:
+      - "8428"
     volumes:
+      - video_m_data:/victoria-metrics-data
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-      - "--web.enable-lifecycle"
-      - "--storage.tsdb.retention.time=48h"
-      - "--storage.tsdb.path=/prometheus"
+      - "--promscrape.config=/etc/prometheus/prometheus.yml"
+      - "--promscrape.config.strictParse=false"
+      - "--storageDataPath=/victoria-metrics-data"
+      - "--promscrape.dropOriginalLabels=false"
+      - "--retentionPeriod=7d"
     networks:
       - monitoring
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 100M
 
   grafana:
     image: grafana/grafana:latest
     ports:
       - "3000:3000"
+    environment:
+      - GF_SERVER_ENABLE_GZIP=true
     networks:
       - monitoring
     restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+
+volumes:
+  video_m_data:
 
 networks:
   monitoring:
