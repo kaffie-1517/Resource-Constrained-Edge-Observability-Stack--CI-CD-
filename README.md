@@ -91,7 +91,7 @@ Retained **Grafana** despite its weight (130MB+) because it provides the industr
 
 ### Scrape Strategy
 *   **Interval**: Increased to **15s** (from 5s).
-*   **Reasoning**: On an edge device, 5s resolution creates excessive CPU context switching. 15s is sufficient for trending without overwhelming the sensor.
+*   **Reason**: On an edge device, 5s resolution creates excessive CPU context switching. 15s is sufficient for trending without overwhelming the sensor.
 
 ## Future Improvements
 Deploying on a `distroless` image would reduce the container size from ~150MB to <30MB and cut startup time by 80%.
