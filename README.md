@@ -17,6 +17,7 @@ The entire stack (Application + Database + Visualization) runs with a strictly e
 2.  **Launch the Stack**:
     Run the following command to build and start all services in detached mode:
     ```bash
+    docker-compose up -d
     ```
 
 3.  **Verify Running Containers**:
