@@ -69,10 +69,12 @@ Replaced the standard heavyweight Prometheus stack with **VictoriaMetrics** to s
 
 The system is currently running well within the 300MB limit:
 
-| Sensor | ~29 MB 
-| VictoriaMetrics | ~91 MB
-| Grafana | ~134 MB
-| **Total** | **~254 MB**
+| Component | Usage |
+| :--- | :--- |
+| Sensor | ~29 MB |
+| VictoriaMetrics | ~91 MB |
+| Grafana | ~134 MB |
+| **Total** | **~254 MB** |
 
 ## Design Approach & Decisions
 
