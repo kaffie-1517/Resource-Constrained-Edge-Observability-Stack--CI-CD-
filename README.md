@@ -76,6 +76,8 @@ The system is currently running well within the 300MB limit:
 | Grafana | ~134 MB |
 | **Total** | **~254 MB** |
 
+<img width="1440" height="900" alt="image" src="https://github.com/user-attachments/assets/69ef31d3-fc83-49f5-9a1b-c1172bdee59a" />
+
 ## Design Approach & Decisions
 
 ### Why VictoriaMetrics? (vs. Prometheus)
