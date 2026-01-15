@@ -35,6 +35,10 @@ The entire stack (Application + Database + Visualization) runs with a strictly e
 3.  Add the Data Source (if not pre-provisioned):
     *   **Type**: Prometheus
     *   **Connection URL**: `http://victoria-metrics:8428` (Important: Use this internal Docker hostname, NOT localhost).
+  
+4. Create a Dashboard out of it, according to the requirements:
+
+<img width="1440" height="900" alt="image" src="https://github.com/user-attachments/assets/5a9b0a2d-9e03-4c9d-b9e7-dd2a292a0adb" />
 
 ### Resource Verification
 
