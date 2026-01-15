@@ -45,7 +45,7 @@ The entire stack (Application + Database + Visualization) runs with a strictly e
 ```mermaid
 graph LR
     subgraph Docker Network [Docker Network: monitoring ]
-        A[Sensor Service] -- Exposes Metrics :8000/metrics --> B[VictoriaMetrics]
+        A[Sensor Service] -- Exposes Metrics :8000/metr.ics  --> B[VictoriaMetrics]
         B -- Scrapes (15s interval) --> A
         C[Grafana] -- Queries Data :8428 --> B
     end
