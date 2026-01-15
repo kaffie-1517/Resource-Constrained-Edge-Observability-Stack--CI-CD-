@@ -40,11 +40,16 @@ The entire stack (Application + Database + Visualization) runs with a strictly e
 
 <img width="1440" height="900" alt="image" src="https://github.com/user-attachments/assets/5a9b0a2d-9e03-4c9d-b9e7-dd2a292a0adb" />
 
-### Resource Verification
+## Data Flow Diagram
 
-To verify that the optimization requirements are met (< 300MB Total RAM), run:
-```bash
-docker stats
+```mermaid
+graph LR
+    subgraph Docker Network [Docker Network: monitoring ]
+        A[Sensor Service] -- Exposes Metrics :8000/metrics --> B[VictoriaMetrics]
+        B -- Scrapes (15s interval) --> A
+        C[Grafana] -- Queries Data :8428 --> B
+    end
+    User -- Browser :3000 --> C
 ```
 
 ## Architecture
@@ -56,6 +61,13 @@ Replaced the standard heavyweight Prometheus stack with **VictoriaMetrics** to s
 | `sensor-service` | Python 3.10-slim | Simulated IoT Sensor | **50 MB** |
 | `victoria-metrics` | VictoriaMetrics | Time-Series Database | **100 MB** |
 | `grafana` | Grafana | Visualization | **150 MB** |
+
+### Resource Verification
+
+To verify that the optimization requirements are met (< 300MB Total RAM), run:
+```bash
+docker stats
+```
 
 ## Key Optimizations
 
