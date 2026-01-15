@@ -111,5 +111,9 @@ Retained **Grafana** despite its weight (130MB+) because it provides the industr
 *   **Interval**: Increased to **15s** (from 5s).
 *   **Reason**: On an edge device, 5s resolution creates excessive CPU context switching. 15s is sufficient for trending without overwhelming the sensor.
 
+## Walkthrough Video Link
+
+https://drive.google.com/file/d/14tORHApmJ793zGvWnMFjL17VjeYAaUrx/view?usp=sharing
+
 ## Future Improvements
 Deploying on a `distroless` image would reduce the container size from ~150MB to <30MB and cut startup time by 80%.
