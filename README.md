@@ -113,7 +113,7 @@ Retained **Grafana** despite its weight (130MB+) because it provides the industr
 
 ## Walkthrough Video Link
 
-https://drive.google.com/file/d/14tORHApmJ793zGvWnMFjL17VjeYAaUrx/view?usp=sharing
+https://drive.google.com/file/d/1EUdAXIUvMc51IWILfj-L2syesAWImhGx/view?usp=sharing
 
 ## Future Improvements
 Deploying on a `distroless` image would reduce the container size from ~150MB to <30MB and cut startup time by 80%.
